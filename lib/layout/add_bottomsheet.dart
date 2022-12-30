@@ -70,6 +70,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       }
                       return null;
                     },
+                    maxLines: 2,
                     decoration: InputDecoration(
                       label: Text("Discription"),
                       enabledBorder: OutlineInputBorder(
@@ -126,7 +127,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
   Future<void> DisplayCleander(BuildContext context) async {
     DateTime? choosen = await showDatePicker(
         context: context,
-        initialDate: DateTime.now(),
+        initialDate: SelectedDate,
         firstDate: DateTime.now(),
         lastDate: DateTime.now().add(Duration(days: 365)));
     setState(() {

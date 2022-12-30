@@ -19,6 +19,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       extendBody: true,     //to make notch with the same color of body
       appBar: AppBar(
         title: Text("To Do List"),
+        toolbarHeight: MediaQuery.of(context).size.height * .2,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
