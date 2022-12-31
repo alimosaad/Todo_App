@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/layout/add_bottomsheet.dart';
+import 'package:todo_app/styles/colors.dart';
 import '../screens/settings/settings.dart';
 import '../screens/tasks/tasks_list.dart';
 
@@ -18,8 +19,9 @@ class _HomeLayoutState extends State<HomeLayout> {
     return Scaffold(
       extendBody: true,     //to make notch with the same color of body
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text("To Do List"),
-        toolbarHeight: MediaQuery.of(context).size.height * .2,
+        toolbarHeight: MediaQuery.of(context).size.height * .18,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 

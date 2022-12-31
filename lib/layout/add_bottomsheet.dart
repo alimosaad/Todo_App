@@ -121,17 +121,18 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                           TaskData task = TaskData(
                               title: titleControler.text,
                               description: discriptionControler.text,
-                              Date: SelectedDate.microsecondsSinceEpoch);
+                              Date: DateUtils.dateOnly(SelectedDate)
+                                  .microsecondsSinceEpoch);
                           showLoding(context, 'Loding....');
-                          addTaskToFirebase(task).then((value) {
-                            hideLoding(context);
-                            showMessage(context, "Task Added", 'Ok', () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            });
-                          }).catchError((error) {
-                            print("error");
+                          addTaskToFirebase(task); /*.then((value) {*/
+                          hideLoding(context);
+                          showMessage(context, "Task Added", 'Ok', () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
                           });
+                          /*}).catchError((error) {
+                            print("error");
+                          });*/
                         }
                       },
                       child: const Text("Add Task")),

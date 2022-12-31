@@ -1,10 +1,20 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/tasks.dart';
 import 'package:todo_app/screens/tasks/task_item.dart';
 
+import '../../shared/network/local/firebase.dart';
 import '../../styles/colors.dart';
 
-class TasksList extends StatelessWidget {
+class TasksList extends StatefulWidget {
+  @override
+  State<TasksList> createState() => _TasksListState();
+}
+
+class _TasksListState extends State<TasksList> {
+  DateTime selectedDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,11 +22,12 @@ class TasksList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CalendarTimeline(
-            initialDate: DateTime.now(),
+            initialDate: selectedDate,
             firstDate: DateTime.now().subtract(Duration(days: 365)),
             lastDate: DateTime.now().add(Duration(days: 365)),
             onDateSelected: (date) {
-              print('$date');
+              selectedDate = date;
+              setState(() {});
             },
             leftMargin: 20,
             monthColor: colorBlack,
@@ -27,13 +38,28 @@ class TasksList extends StatelessWidget {
             selectableDayPredicate: (date) => true,
             locale: 'en',
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: 15,
-                itemBuilder: (c, index) {
-                  return TaskItem();
-                }),
-          )
+          StreamBuilder<QuerySnapshot<TaskData>>(
+              stream: getTaskFromFirebase(selectedDate),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text("Something went wrong"));
+                }
+                var tasks =
+                    snapshot.data?.docs.map((doc) => doc.data()).toList() ?? [];
+                if (tasks.isEmpty) {
+                  return Center(child: Text("No Data"));
+                }
+                return Expanded(
+                  child: ListView.builder(
+                      itemCount: tasks.length,
+                      itemBuilder: (c, index) {
+                        return TaskItem(tasks[index]);
+                      }),
+                );
+              })
         ],
       ),
     );
