@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/tasks.dart';
+import 'package:todo_app/shared/component/components.dart';
+import 'package:todo_app/shared/network/local/firebase.dart';
 import 'package:todo_app/styles/MyThemeData.dart';
 import 'package:todo_app/styles/colors.dart';
 
@@ -17,7 +20,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -28,7 +31,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   color: colorBlack,
                 ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Form(
@@ -45,7 +48,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
 
                       return null;
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       label: Text("Title"),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -59,7 +62,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   TextFormField(
@@ -71,7 +74,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       return null;
                     },
                     maxLines: 2,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       label: Text("Discription"),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -85,7 +88,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -94,7 +97,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                           color: colorBlack,
                         ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   InkWell(
@@ -109,14 +112,29 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        if (formKey.currentState!.validate()) {}
+                        if (formKey.currentState!.validate()) {
+                          TaskData task = TaskData(
+                              title: titleControler.text,
+                              description: discriptionControler.text,
+                              Date: SelectedDate.microsecondsSinceEpoch);
+                          showLoding(context, 'Loding....');
+                          addTaskToFirebase(task).then((value) {
+                            hideLoding(context);
+                            showMessage(context, "Task Added", 'Ok', () {
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            });
+                          }).catchError((error) {
+                            print("error");
+                          });
+                        }
                       },
-                      child: Text("Add Task")),
+                      child: const Text("Add Task")),
                 ],
               )),
         ],
