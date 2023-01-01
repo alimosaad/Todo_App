@@ -25,9 +25,9 @@ class MyThemeData {
         displayLarge: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
         titleMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
+            fontSize: 20, fontWeight: FontWeight.bold, color: colorBlack),
         titleSmall: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: colorGreen),
+            fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
       ),
       floatingActionButtonTheme:
           FloatingActionButtonThemeData(backgroundColor: primaryColor),
@@ -38,11 +38,11 @@ class MyThemeData {
 
   static ThemeData darkTheme = ThemeData(
       primaryColor: primaryColor,
-      scaffoldBackgroundColor: greenBackground,
+      scaffoldBackgroundColor: darkPrimary,
       colorScheme: ColorScheme(
           brightness: Brightness.light,
           primary: primaryColor,
-          onPrimary: Colors.white,
+          onPrimary: colorBlack,
           secondary: greenBackground,
           onSecondary: colorBlack,
           error: Colors.red,
@@ -58,12 +58,15 @@ class MyThemeData {
         displayLarge: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
         titleMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
+            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
         titleSmall: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: colorGreen),
+            fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: primaryColor,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Colors.white,
+          backgroundColor: colorBlack,
           selectedItemColor: primaryColor,
           unselectedItemColor: Colors.grey));
 }
