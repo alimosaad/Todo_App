@@ -28,7 +28,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       floatingActionButton: FloatingActionButton(
         shape: StadiumBorder(
             side: BorderSide(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onSecondary,
           width: 3,
         )),
         onPressed: () {
@@ -37,18 +37,16 @@ class _HomeLayoutState extends State<HomeLayout> {
         child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         notchMargin: 7,
         shape: CircularNotchedRectangle(),
-
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          currentIndex:currentIndex ,
-          onTap: (index){
-            currentIndex=index;
-            setState(() {
-
-            });
+          currentIndex: currentIndex,
+          onTap: (index) {
+            currentIndex = index;
+            setState(() {});
           },
           items: [
             BottomNavigationBarItem(
