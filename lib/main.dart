@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/providers/my_provider.dart';
 import 'package:todo_app/styles/MyThemeData.dart';
 import 'layout/home_layout.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -11,12 +13,15 @@ Future<void> main() async {
   await FirebaseFirestore.instance.disableNetwork();
 
   /// to make app local database
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => MyProvider(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
+
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -31,7 +36,7 @@ class MyApp extends StatelessWidget {
       },
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: provider.mode,
       debugShowCheckedModeBanner: false,
     );
   }

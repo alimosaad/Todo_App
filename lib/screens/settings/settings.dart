@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/settings/theme_bottom_sheet.dart';
 import 'package:todo_app/styles/MyThemeData.dart';
 
 import '../../styles/colors.dart';
+import 'language_bottom_sheet.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -19,7 +21,9 @@ class SettingsScreen extends StatelessWidget {
             height: 12,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showLanguageBottomSheet(context);
+            },
             child: Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
@@ -43,7 +47,9 @@ class SettingsScreen extends StatelessWidget {
             height: 12,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showThemeModeBottomSheet(context);
+            },
             child: Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
@@ -62,5 +68,21 @@ class SettingsScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void showLanguageBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return LanguageBottomSheet();
+        });
+  }
+
+  void showThemeModeBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return ThemeModeBottomSheet();
+        });
   }
 }
