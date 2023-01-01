@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:todo_app/layout/add_bottomsheet.dart';
+import 'package:todo_app/styles/colors.dart';
 import '../screens/settings/settings.dart';
 import '../screens/tasks/tasks_list.dart';
 
@@ -18,18 +19,21 @@ class _HomeLayoutState extends State<HomeLayout> {
     return Scaffold(
       extendBody: true,     //to make notch with the same color of body
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text("To Do List"),
+        toolbarHeight: MediaQuery.of(context).size.height * .18,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       floatingActionButton: FloatingActionButton(
         shape: StadiumBorder(
-          side: BorderSide(
-            color: Colors.white,
-            width: 3,
-          )
-        ),
-        onPressed: (){},
+            side: BorderSide(
+          color: Colors.white,
+          width: 3,
+        )),
+        onPressed: () {
+          showaddTaskBottomSheet();
+        },
         child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -47,14 +51,35 @@ class _HomeLayoutState extends State<HomeLayout> {
             });
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.list,size: 30,),label: 'Lists'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings,size: 30,),label: 'Settins'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.list,
+                  size: 30,
+                ),
+                label: 'Lists'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  size: 30,
+                ),
+                label: 'Settins'),
           ],
         ),
       ),
-      body:tabs[currentIndex] ,
+      body: tabs[currentIndex],
     );
   }
 
-  List<Widget>tabs=[TasksList(),SettingsScreen()];
+  List<Widget> tabs = [TasksList(), SettingsScreen()];
+
+  void showaddTaskBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: AddTaskSheet(),
+            ));
+  }
 }
