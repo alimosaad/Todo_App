@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/styles/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../providers/my_provider.dart';
 import '../../styles/MyThemeData.dart';
@@ -29,7 +30,7 @@ class ThemeModeBottomSheet extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'light',
+                    AppLocalizations.of(context)!.light,
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   Spacer(),
@@ -54,7 +55,8 @@ class ThemeModeBottomSheet extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: Row(
                 children: [
-                  Text('dark', style: Theme.of(context).textTheme.titleSmall),
+                  Text(AppLocalizations.of(context)!.dark,
+                      style: Theme.of(context).textTheme.titleSmall),
                   Spacer(),
                   Icon(Icons.done,
                       size: 30,

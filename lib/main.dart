@@ -6,6 +6,7 @@ import 'package:todo_app/providers/my_provider.dart';
 import 'package:todo_app/styles/MyThemeData.dart';
 import 'layout/home_layout.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,12 +25,13 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale('en'), Locale('ar')],
-      locale: Locale('en'),
+      locale: Locale(provider.languageCode),
       initialRoute: HomeLayout.routeName,
       routes: {
         HomeLayout.routeName: (c) => HomeLayout(),

@@ -3,6 +3,7 @@ import 'package:todo_app/layout/add_bottomsheet.dart';
 import 'package:todo_app/styles/colors.dart';
 import '../screens/settings/settings.dart';
 import '../screens/tasks/tasks_list.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routeName = 'Home';
@@ -20,7 +21,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       extendBody: true,     //to make notch with the same color of body
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: Text("To Do List"),
+        title: Text(AppLocalizations.of(context)!.apptitle),
         toolbarHeight: MediaQuery.of(context).size.height * .18,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -54,13 +55,13 @@ class _HomeLayoutState extends State<HomeLayout> {
                   Icons.list,
                   size: 30,
                 ),
-                label: 'Lists'),
+                label: AppLocalizations.of(context)!.list),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                   size: 30,
                 ),
-                label: 'Settins'),
+                label: AppLocalizations.of(context)!.settings),
           ],
         ),
       ),

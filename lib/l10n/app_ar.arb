@@ -1,6 +1,11 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-      "description": "The conventional newborn programmer greeting"
-    }
+   "language":"اللغة",
+   "theme":"الوضع",
+   "arabic":"العربية",
+   "english":"الإنجليزية",
+   "light":"مضيئ",
+   "dark":"مظلم",
+   "settings":"الأعدادات",
+   "list":"المهام",
+   "apptitle":"مهام اليوم"
 }
