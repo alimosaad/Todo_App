@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/tasks.dart';
 import 'package:todo_app/screens/tasks/task_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/network/local/firebase.dart';
 import '../../styles/colors.dart';

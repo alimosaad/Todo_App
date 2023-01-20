@@ -1,3 +1,13 @@
 {
-    "helloWorld": "¡Hola Mundo!"
+ "language":"Language",
+ "theme":"Theme",
+ "arabic":"Arabic",
+ "english":"English",
+ "light":"Light",
+ "dark":"dark",
+ "settings":"Settings",
+ "list":"List",
+ "apptitle":"To Do List",
+ "delete":"Delete",
+ "edit":"Edit"
 }
