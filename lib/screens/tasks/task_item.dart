@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/tasks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:todo_app/screens/tasks/update_task.dart';
 import 'package:todo_app/shared/network/local/firebase.dart';
 import 'package:todo_app/styles/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TaskItem extends StatelessWidget {
   TaskData task;
@@ -21,15 +23,18 @@ class TaskItem extends StatelessWidget {
           backgroundColor: colorRed,
           foregroundColor: Colors.white,
           icon: Icons.delete,
-          label: 'Delete',
+          label: AppLocalizations.of(context)!.delete,
         ),
         SlidableAction(
-          onPressed: (context) {},
+          onPressed: (context) {
+            Navigator.pushNamed(context, UpdateScreen.routeName,
+                arguments: task);
+          },
           borderRadius: BorderRadius.circular(12),
           backgroundColor: primaryColor,
           foregroundColor: Colors.white,
           icon: Icons.edit,
-          label: 'Edit',
+          label: AppLocalizations.of(context)!.edit,
         ),
       ]),
       child: Container(

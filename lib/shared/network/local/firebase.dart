@@ -25,3 +25,12 @@ Stream<QuerySnapshot<TaskData>> getTaskFromFirebase(DateTime dateTime) {
 Future<void> deleteTaskFromFirebase(String id) {
   return getCollection().doc(id).delete();
 }
+
+Future<void> updateTaskToFirebase(TaskData taskData) {
+  return getCollection().doc(taskData.id).update({
+    "Date": taskData.Date,
+    "description": taskData.description,
+    "isDone": taskData.isDone,
+    "title": taskData.title
+  });
+}
