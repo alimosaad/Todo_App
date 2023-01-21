@@ -50,7 +50,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     horizontal: MediaQuery.of(context).size.width * 0.06,
                     vertical: MediaQuery.of(context).size.width * 0.06),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
@@ -59,9 +59,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     Text(
                       "Edit Task",
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: colorBlack,
-                          ),
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                     const SizedBox(
                       height: 15,
@@ -83,8 +81,12 @@ class _UpdateScreenState extends State<UpdateScreen> {
 
                                 return null;
                               },
-                              decoration: const InputDecoration(
-                                label: Text("Edit Title"),
+                              decoration: InputDecoration(
+                                label: Text(
+                                  "Edit Title",
+                                  style:
+                                      Theme.of(context).textTheme.displayLarge,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: primaryColor,
@@ -112,8 +114,12 @@ class _UpdateScreenState extends State<UpdateScreen> {
                                 return null;
                               },
                               maxLines: 2,
-                              decoration: const InputDecoration(
-                                label: Text("Edit Discription"),
+                              decoration: InputDecoration(
+                                label: Text(
+                                  "Edit Discription",
+                                  style:
+                                      Theme.of(context).textTheme.displayLarge,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: primaryColor,
@@ -131,12 +137,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                             ),
                             Text(
                               "Select Edit date",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                    color: colorBlack,
-                                  ),
+                              style: Theme.of(context).textTheme.displayLarge,
                             ),
                             const SizedBox(
                               height: 15,

@@ -19,17 +19,18 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).colorScheme.onPrimary,
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.07,
+          ),
           Text(
             "Add New Task",
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: colorBlack,
-                ),
+            style: Theme.of(context).textTheme.displayLarge,
           ),
           const SizedBox(
             height: 15,
@@ -48,8 +49,9 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
 
                       return null;
                     },
-                    decoration: const InputDecoration(
-                      label: Text("Title"),
+                    decoration: InputDecoration(
+                      label: Text("Title",
+                          style: Theme.of(context).textTheme.displayLarge),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: primaryColor,
@@ -74,8 +76,9 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       return null;
                     },
                     maxLines: 2,
-                    decoration: const InputDecoration(
-                      label: Text("Discription"),
+                    decoration: InputDecoration(
+                      label: Text("Discription",
+                          style: Theme.of(context).textTheme.displayLarge),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: primaryColor,
@@ -92,11 +95,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                     height: 20,
                   ),
                   Text(
-                    "Select date",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: colorBlack,
-                        ),
-                  ),
+                      "Select date",
+                      style: Theme.of(context).textTheme.displayLarge),
                   const SizedBox(
                     height: 15,
                   ),
@@ -107,8 +107,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                     child: Text(
                       '${SelectedDate.year}/${SelectedDate.month}/${SelectedDate.day}',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: primaryColor,
-                          ),
+                        color: primaryColor,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -135,7 +135,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                           });*/
                         }
                       },
-                      child: const Text("Add Task")),
+                      child: Text("Add Task",
+                          style: Theme.of(context).textTheme.displayLarge)),
                 ],
               )),
         ],

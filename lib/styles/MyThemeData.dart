@@ -23,9 +23,9 @@ class MyThemeData {
           iconTheme: IconThemeData(color: Colors.white)),
       textTheme: TextTheme(
         displayLarge: TextStyle(
-            fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 18, fontWeight: FontWeight.bold, color: colorBlack),
         titleMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: colorBlack),
+            fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
         titleSmall: TextStyle(
             fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
       ),
@@ -50,15 +50,15 @@ class MyThemeData {
           background: greenBackground,
           onBackground: primaryColor,
           surface: colorBlack,
-          onSurface: colorBlack),
+          onSurface: Colors.white),
       appBarTheme: AppBarTheme(
           backgroundColor: primaryColor,
           iconTheme: IconThemeData(color: Colors.white)),
       textTheme: TextTheme(
         displayLarge: TextStyle(
-            fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
         titleMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
         titleSmall: TextStyle(
             fontSize: 20, fontWeight: FontWeight.bold, color: primaryColor),
       ),

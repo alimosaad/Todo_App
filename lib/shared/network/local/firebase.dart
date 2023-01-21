@@ -34,3 +34,9 @@ Future<void> updateTaskToFirebase(TaskData taskData) {
     "title": taskData.title
   });
 }
+
+Future<void> UpdateDone(TaskData taskData) {
+  return getCollection().doc(taskData.id).update({
+    "isDone": true,
+  });
+}

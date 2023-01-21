@@ -41,13 +41,14 @@ class TaskItem extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(12)),
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(12)),
         child: Row(
           children: [
             Container(
               width: 3,
               height: 50,
-              color: Theme.of(context).primaryColor,
+              color: task.isDone ? colorGreen : Theme.of(context).primaryColor,
             ),
             SizedBox(
               width: 15,
@@ -56,20 +57,39 @@ class TaskItem extends StatelessWidget {
               children: [
                 Text(
                   task.title,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: task.isDone
+                      ? Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: colorGreen)
+                      : Theme.of(context).textTheme.titleMedium,
                 ),
-                Text(task.description),
+                Text(task.description,
+                    style: Theme.of(context).textTheme.displayLarge),
               ],
             ),
             Spacer(
               flex: 2,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-              decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(6)),
-              child: Image.asset("assets/done.png"),
+            InkWell(
+              onTap: () {
+                if (!task.isDone) {
+                  UpdateDone(task);
+                }
+              },
+              child: task.isDone
+                  ? Text(
+                      "Done!",
+                      style: TextStyle(color: colorGreen),
+                    )
+                  : Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(6)),
+                      child: Image.asset("assets/done.png"),
+                    ),
             )
           ],
         ),
