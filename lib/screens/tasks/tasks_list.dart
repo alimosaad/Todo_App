@@ -31,8 +31,8 @@ class _TasksListState extends State<TasksList> {
               setState(() {});
             },
             leftMargin: 20,
-            monthColor: colorBlack,
-            dayColor: colorBlack,
+            monthColor: Theme.of(context).colorScheme.onSurface,
+            dayColor: Theme.of(context).colorScheme.onSurface,
             activeDayColor: Colors.white,
             activeBackgroundDayColor: Theme.of(context).primaryColor,
             dotsColor: Colors.white,
